@@ -1,0 +1,33 @@
+{% extends "home.html" %}
+{% load static %}
+
+{% block body %}
+
+{% for chef in chef_list %}
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-product-widget">
+                        <div class="single-wid-product">
+                            <a href="single-product.html"><img src="/media/{{ chef.foto }}" alt="" class="product-thumb"></a>
+                            <h2><a href="single-product.html">{{ chef.nome }}</a></h2>
+                            <div class="product-wid-rating">
+                                {{ chef.nota }} <i class="fa fa-star"></i>
+                            </div>
+                            <div class="product-wid-price">
+                                <h5>{{ chef.especialidades }} </h5>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endfor %}
+
+
+{% endblock%}

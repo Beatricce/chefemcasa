@@ -1,0 +1,6 @@
+#6B6A64 - cinza
+#C7C6C3 - cinza escuro
+#474440 - quase preto
+#FAD936 - amarelo
+#ECEBE2 - quase branco
+#F9F9F3 - quase branco
