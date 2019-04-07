@@ -10,6 +10,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<script type="text/javascript" async="" src="{% static 'ustora/js/vinteum.com_files/ga.js.download' %}"></script>
+    <script src="{% static 'ustora/js/vinteum.com_files/jquery-1.5.2.min.js.download' %}"></script>
+    <script src="{% static 'ustora/js/vinteum.com_files/jquery.maskedinput-1.3.min.js.download' %}"></script>-->
+
     <title>Checkout Page - iChef</title>
     
     <!-- Google Fonts -->
@@ -249,7 +253,7 @@
                                 <div class="clear"></div>
                             </form>
 
-                            <form id="form_cliente" action="/filiacaoCliente/" enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
+                            <form id="form_cliente" action="/filiacaoCliente/" class="checkout" method="POST" name="checkout" enctype="multipart/form-data">
                                 {% csrf_token %}
 
                                 <div id="customer_details" class="col2-set">
@@ -267,56 +271,90 @@
                                             </p>
                                             
                                             <p id="billing_first_name_field" class="form-row form-row-first validate-required">
-                                                <label class="" for="billing_first_name">Nome <abbr title="obrigatório" class="required">*</abbr>
+                                                <label class="" for="nome_cliente">Nome <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="nome_cliente" name="billing_first_name" class="input-text">
+                                                <input type="text" value="" placeholder="" id="nome_cliente" name="nome_cliente" class="input-text">
                                             </p>
 
                                             <p id="billing_last_name_field" class="form-row form-row-last validate-required">
-                                                <label class="" for="billing_last_name">Sobrenome <abbr title="obrigatório" class="required">*</abbr>
+                                                <label class="" for="sobrenome_cliente">Sobrenome <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="" id="sobrenome_cliente" name="billing_last_name" class="input-text ">
+                                                <input type="text" value="" placeholder="" id="sobrenome_cliente" name="sobrenome_cliente" class="input-text ">
                                             </p>
                                             <div class="clear"></div>
 
-                                            <p id="billing_company_field" class="form-row form-row-wide">
-                                                <label class="" for="billing_company">CPF <abbr title="obrigatório" class="required">*</abbr></label>
-                                                <input type="text" value="" maxlength="11" placeholder="XXX.XXX.XXX-XX" id="CPF_cliente" oninput="this.value=this.value.replace(/[^0-9]/g,'');" name="billing_company" class="input-text ">
+                                            <p id="billing_cpf_field" class="form-row form-row-wide">
+                                                <label class="" for="cpf_cliente">CPF <abbr title="obrigatório" class="required">*</abbr></label>
+                                                <input type="text" value="" maxlength="11" placeholder="XXX.XXX.XXX-XX" id="cpf_cliente" name="cpf_cliente" class="input-text ">
                                             </p>
 
-                                            <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
-                                                <label class="" for="billing_address_1">Endereço <abbr title="obrigatório" class="required">*</abbr>
+                                            <p id="billing_rg_field" class="form-row form-row-wide">
+                                                <label class="" for="rg_cliente">RG <abbr title="obrigatório" class="required">*</abbr></label>
+                                                <input type="text" value="" maxlength="9" placeholder="XX.XXX.XXX-X" id="rg_cliente" name="rg_cliente" class="input-text ">
+                                            </p>
+
+                                            <p id="billing_birthday" class="form-row form-row-wide">
+                                                <label class="" for="birthday_cliente">Data de nascimento <abbr title="obrigatório" class="required">*</abbr></label>
+                                                <input type="text" value="" maxlength="6" placeholder="XX/XX/XX" id="birthday_cliente" name="birthday_cliente" class="form-control">
+                                            </p>
+
+                                            <p id="billing_address_field" class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="cep_cliente">CEP <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="Endereço" id="endereco_cliente" name="billing_address_1" class="input-text ">
+                                                <input type="text" value="" maxlength="7" placeholder="CEP" id="cep_cliente" name="cep_cliente" class="input-text ">
                                             </p>
 
-                                            <p id="billing_address_2_field" class="form-row form-row-wide address-field validate-required">
-                                                <input type="text" value="" placeholder="Número" id="numero_cliente" name="billing_address_2" class="input-text ">
+                                            <!--<p id="billing_address_field2" class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="endereco_cliente">Endereço 
+                                                </label>
+                                                <p type="text" value="" placeholder="Endereço" id="endereco_cliente" name="endereco_cliente"></p>
+
+                                            </p>
+                                            <p id="billing_address_field3" class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="bairro_cliente">Bairro 
+                                                </label>
+                                                <p type="text" value="" placeholder="Bairro" id="bairro_cliente" name="bairro_cliente"></p>
+                                            </p>
+                                            <p id="billing_address_field4" class="form-row form-row-wide address-field validate-required">
+                                                <label class="" for="cidade_cliente">Cidade 
+                                                </label>
+                                                <p type="text" value="" placeholder="Cidade" id="cidade_cliente" name="cidade_cliente"></p>
+                                            </p>-->
+
+
+                                            <p id="billing_number_field" class="form-row form-row-wide address-field validate-required">
+                                                <input type="text" value="" maxlength="7" placeholder="Número" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="numero_cliente" name="numero_cliente" class="input-text ">
                                             </p>
 
-                                            <p id="billing_address_3_field" class="form-row form-row-wide address-field optional">
+                                            <!--<p id="billing_complement_field" class="form-row form-row-wide address-field optional">
                                                 <input type="text" value="" placeholder="Apartamento, bloco, unidade, etc (opcional)" id="complemento_cliente" name="billing_address_3" class="input-text ">
                                             </p>
 
                                             <p id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
-                                                <label class="" for="billing_city">Cidade <abbr title="obrigatório" class="required">*</abbr>
+                                                <label class="" for="cidade_cliente">Cidade <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" placeholder="Cidade" id="cidade_cliente" name="billing_city" class="input-text ">
+                                                <input type="text" value="" placeholder="Cidade" id="cidade_cliente" name="cidade_cliente" class="input-text ">
                                             </p>
 
                                             <p id="billing_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
-                                                <label class="" for="billing_state">Estado <abbr title="obrigatório" class="required">*</abbr></label>
-                                                <input type="text" id="estado_cliente" name="billing_state" placeholder="Estado" value="" class="input-text ">
-                                            </p>
+                                                <label class="" for="estado_cliente">Estado <abbr title="obrigatório" class="required">*</abbr></label>
+                                                <input type="text" id="estado_cliente" name="estado_cliente" placeholder="Estado" value="" class="input-text ">
+                                            </p>-->
 
                                             <!--<p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">-->
                                             <p id="billing_phone_field" class="form-row validate-required">
-                                                <label class="" for="billing_phone">Telefone <abbr title="obrigatório" class="required">*</abbr>
+                                                <label class="" for="telefone_cliente">Telefone <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11" data-mask="(00) 00000-00000" value="" placeholder="" id="telefone_cliente" name="billing_phone" class="input-text form-control">
+                                                <input type="text"  maxlength="11" value="" placeholder="" id="telefone_cliente" name="telefone_cliente" class="form-control">
                                             </p>
                                             
                                             <div class="clear"></div>
+
+                                            <!--<p id="foto_cliente" class="form-row form-row-first validate-required">
+                                                <label class="" for="foto_cliente">Foto <abbr title="obrigatório" class="required">*</abbr>
+                                                </label>
+                                                <input type="file" value="" placeholder="" id="foto_cliente" name="foto_cliente" class="input-text">-->
+                                            </p>
 
                                             <!--<p id="billing_postcode_field" class="form-row form-row-last address-field validate-required validate-postcode" data-o_class="form-row form-row-last address-field validate-required validate-postcode">
                                                 <label class="" for="billing_postcode"  >Avaliações <abbr title="required" class="required">*</abbr>
@@ -326,27 +364,27 @@
 
                                             <div class="clear"></div>-->
 
-                                            <p id="billing_card_1" class="form-row validate-required"><!-- validate-email">-->
-                                                <label class="" for="billing_card_1">Dados do cartão de crédito <abbr title="obrigatório" class="required">*</abbr>
+                                            <!--<p id="billing_card_1" class="form-row validate-required">validate-email">
+                                                <label class="" for="cartao_cliente">Dados do cartão de crédito <abbr title="obrigatório" class="required">*</abbr>
                                                 </label>
-                                                <input type="text" value="" oninput="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="Número do cartão" maxlength="16" id="cartao_cliente" name="billing_card_1" class="input-text ">
+                                                <input type="text" value="" placeholder="Número do cartão" maxlength="16" id="cartao_cliente" name="cartao_cliente" class="input-text ">
 
                                             </p>
 
-                                            <!--<p id="bank_account_2" class="form-row form-row-wide address-field validate-required">-->
-                                            <p id="billing_card_2" class="form-row validate-required">
+                                            <p id="bank_account_2" class="form-row form-row-wide address-field validate-required">-->
+                                            <!--<p id="billing_card_2" class="form-row validate-required">
                                                 <div class="billing_card_date ">
                                                     <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="2" value="" placeholder="MM" id="cartao_cliente_mm" name="cartao_cliente_mm" class="input-text">
                                                     <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="2" value="" placeholder="YY" id="cartao_cliente_yy" name="cartao_cliente_yy" class="input-text ">
                                                 </div>
                                             </p>
 
-                                            <p id="billing_account_bank_3" class="form-row validate-required">
+                                            <p id="billing_card_3" class="form-row validate-required">
                                                 <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="3" value="" placeholder="CVV" id="cartao_cliente_cvv" name="cartao_cliente_cvv" class="input-text ">
-                                                <!--<small id="accountHelp" class="form-text text-muted">*Sem hífen.</small>-->
-                                            </p>
+                                                <small id="accountHelp" class="form-text text-muted">*Sem hífen.</small>
+                                            </p>-->
 
-                                            <button id="bt_cadastro_cliente" type="submit"  onclick="cliente()" style="background-color: #FAD936; color: #474440; font-weight: bold;" >Cadastrar</button>
+                                            <input id="bt_cadastro_cliente" type="submit" value="Cadastrar" style="background-color: #FAD936; color: #474440; font-weight: bold;"/>
 
                                             <!--
                                             <div class="create-account">
@@ -366,7 +404,7 @@
 
                             </form>
 
-                            <form id="form_chef" action="filiacaoChef" enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout2">
+                            <form id="form_chef" enctype="multipart/form-data" action="/filiacaoChef/" class="checkout" method="POST" name="checkout2">
                                 {% csrf_token %}
                                 <div id="customer_details2" class="col2-set">
                                     <div id="chef" class="col-2">
@@ -400,58 +438,95 @@
                                                     <!--<div id="myDIV">
                                                         This is my DIV element.
                                                     </div>-->
-                                                    <label class="" for="shipping_first_name">Nome <abbr title="obrigatório" class="required">*</abbr>
+                                                    <label class="" for="nome_chef">Nome <abbr title="obrigatório" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="nome_chef" name="shipping_first_name" class="input-text ">
+                                                    <input type="text" value="" placeholder="" id="nome_chef" name="nome_chef" class="input-text ">
                                                 </p>
 
                                                 <p id="shipping_last_name_field" class="form-row form-row-last validate-required">
-                                                    <label class="" for="shipping_last_name">Sobrenome <abbr title="obrigatório" class="required">*</abbr>
+                                                    <label class="" for="sobrenome_chef">Sobrenome <abbr title="obrigatório" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="sobrenome_chef" name="shipping_last_name" class="input-text ">
+                                                    <input type="text" value="" placeholder="" id="sobrenome_chef" name="sobrenome_chef" class="input-text ">
                                                 </p>
 
                                                 <div class="clear"></div>
 
-                                                <p id="shipping_company_field" class="form-row form-row-wide">
-                                                    <label class="" for="shipping_company">CPF <abbr title="obrigatório" class="required">*</abbr></label>
-                                                    <input type="text" value="" maxlength="11" placeholder="XXX.XXX.XXX-XX" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="cpf_chef" name="shipping_company" class="input-text ">
+                                                <p id="shipping_cpf_field" class="form-row form-row-wide">
+                                                    <label class="" for="cpf_chef">CPF <abbr title="obrigatório" class="required">*</abbr></label>
+                                                    <input type="text" value="" maxlength="11" placeholder="XXX.XXX.XXX-XX" id="cpf_chef" name="cpf_chef" class="input-text ">
                                                 </p>
 
-                                                <p id="shipping_address_1_field" class="form-row form-row-wide address-field validate-required">
-                                                    <label class="" for="shipping_address_1">Endereço <abbr title="obrigatório" class="required">*</abbr>
-                                                    </label>
-                                                    <input type="text" value="" placeholder="Endereço" id="endereco_chef" name="shipping_address_1" class="input-text ">
+                                                <p id="billing_rg_field" class="form-row form-row-wide">
+                                                    <label class="" for="rg_chef">RG <abbr title="obrigatório" class="required">*</abbr></label>
+                                                    <input type="text" value="" maxlength="9" placeholder="XX.XXX.XXX-X" id="rg_chef" name="rg_chef" class="input-text ">
+                                                </p>
+
+                                                <p id="shipping_birthday_field" class="form-row form-row-wide">
+                                                    <label class="" for="birthday_chef">Data de nascimento <abbr title="obrigatório" class="required">*</abbr></label>
+                                                    <input type="text" value="" maxlength="6" placeholder="XX/XX/XX" id="birthday_chef" name="birthday_chef" class="form-control">
                                                 </p>
 
                                                 <p id="shipping_address_2_field" class="form-row form-row-wide address-field validate-required">
-                                                    <input type="text" value="" placeholder="Número" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="numero_chef" name="shipping_address_2" class="input-text ">
+                                                    <label class="" for="cep_chef">CEP <abbr title="obrigatório" class="required">*</abbr>
+                                                    </label>
+
+                                                    <!--<input type="text" value="" maxlength="7" placeholder="CEP" id="cep_chef" name="cep_chef" class="input-text ">-->
+
+                                                    <input type="text" value="" placeholder="CEP" id="cep_chef" name="cep_chef" class="input-text "
+                                                    oninput="seeCEP()">
                                                 </p>
 
-                                                <p id="shipping_address_3_field" class="form-row form-row-wide address-field">
-                                                    <input type="text" value="" placeholder="Apartamento, bloco, unidade, etc (opcional)" id="shipping_address_3" name="shipping_address_3" id="complemento_chef" class="input-text ">
+                                                <p id="shipping_address_2_field" class="form-row form-row-wide address-field validate-required">
+                                                    <label class="" for="endereco_chef">Endereço 
+                                                    </label>
+                                                    <p type="text" value="" placeholder="Endereço" id="endereco_chef" name="endereco_chef"></p>
+
+                                                </p>
+                                                <p id="shipping_address_2_field" class="form-row form-row-wide address-field validate-required">
+                                                    <label class="" for="bairro_chef">Bairro 
+                                                    </label>
+                                                    <p type="text" value="" placeholder="Bairro" id="bairro_chef" name="bairro_chef"></p>
+                                                </p>
+                                                <p id="shipping_address_2_field" class="form-row form-row-wide address-field validate-required">
+                                                    <label class="" for="cidade_chef">Cidade 
+                                                    </label>
+                                                    <p type="text" value="" placeholder="Cidade" id="cidade_chef" name="cidade_chef"></p>
+                                                </p>                                                
+
+                                                <p id="shipping_address_2_field" class="form-row form-row-wide address-field validate-required">
+                                                    <input type="text" value="" maxlength="7" placeholder="Número" oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="numero_chef" name="numero_chef" class="input-text ">
+                                                </p>
+
+                                                <!--<p id="shipping_address_3_field" class="form-row form-row-wide address-field">
+                                                    <input type="text" value="" placeholder="Apartamento, bloco, unidade, etc (opcional)" name="complemento_chef" id="complemento_chef" class="input-text ">
                                                 </p>
 
                                                 <p id="shipping_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
-                                                    <label class="" for="shipping_city">Cidade <abbr title="obrigatório" class="required">*</abbr>
+                                                    <label class="" for="cidade_chef">Cidade <abbr title="obrigatório" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="Cidade" id="cidade_chef" name="shipping_city" class="input-text ">
+                                                    <input type="text" value="" placeholder="Cidade" id="cidade_chef" name="cidade_chef" class="input-text ">
                                                 </p>
 
                                                 <p id="shipping_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
-                                                    <label class="" for="shipping_state">Estado <abbr title="obrigatório" class="required">*</abbr>
+                                                    <label class="" for="estado_chef">Estado <abbr title="obrigatório" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" id="estado_chef" name="shipping_state" placeholder="Estado" value="" class="input-text ">
-                                                </p>
+                                                    <input type="text" id="estado_chef" name="estado_chef" placeholder="Estado" value="" class="input-text ">
+                                                </p>-->
                                                 
                                                 <div class="clear"></div>
 
-                                                <p id="billing_phone_field" class="form-row validate-required">
-                                                <label class="" for="billing_phone">Telefone <abbr title="obrigatório" class="required">*</abbr>
-                                                </label>
-                                                <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11" data-mask="(00) 00000-00000" value="" placeholder="" id="telefone_chef" name="billing_phone" class="input-text form-control">
+                                                <p id="shipping_phone_field" class="form-row validate-required">
+                                                    <label class="" for="telefone_chef">Telefone <abbr title="obrigatório" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" maxlength="11" value="" placeholder="" id="telefone_chef" name="telefone_chef" class="input-text form-control">
                                                 </p>
-                                            
+                                                
+                                                <p id="foto_chef" class="form-row form-row-first validate-required">
+                                                    <label class="" for="foto_chef">Foto <!--<abbr title="obrigatório" class="required">*</abbr>
+                                                    </label>-->
+                                                    <input type="file" value="" placeholder="" id="foto_chef" name="foto_chef" class="input-text">
+                                                </p>
+
                                                 <!--<div class="clear"></div>
 
                                                 <p id="billing_postcode_field" class="form-row form-row-last address-field validate-required validate-postcode" data-o_class="form-row form-row-last address-field validate-required validate-postcode">
@@ -464,11 +539,11 @@
 
                                                 <div id="add_input">
                                                     <p id="shipping_postcode_field" class="form-row form-row-last address-field validate-required validate-postcode" data-o_class="form-row form-row-last address-field validate-required validate-postcode">
-                                                        <label class="" for="shipping_postcode">Especialidades <abbr title="obrigatório" class="required">*</abbr>
+                                                        <label class="" for="especialidade_chef">Especialidades <abbr title="obrigatório" class="required">*</abbr>
                                                         </label>
                                                         <!--<input type="text" value="" placeholder="" id="shipping_postcode" name="shipping_postcode" class="input-text ">-->
-                                                        <!--<textarea cols="5" rows="2" placeholder="Descrição" id="order_comments" class="input-text " name="order_comments"></textarea>-->
-                                                        <select class="billing_bank_select" id="especialidade_chef" name="billing_bank_select" title="teste" > 
+                                                        <textarea cols="5" rows="2" placeholder="Descrição especialidades" id="especialidade_chef" class="input-text " name="especialidade_chef"></textarea>
+                                                        <!--<select class="billing_bank_select" id="especialidade_chef" name="especialidade_chef" title="teste" > 
                                                             <option value="">--Selecione culinária--</option>
                                                             <option value="BB">Árabe</option>
                                                             <option value="BR">Italina</option>
@@ -497,15 +572,15 @@
                                                             <option value="SA">Chilena</option>
                                                             <option value="SA">Nordestina</option>
                                                             <option value="SA">Vegetariana</option>
-                                                        </select>
+                                                        </select>-->
                                                     </p>
                                                 </div>
                                                 
-                                                <div class="div_bt2">
+                                                <!--<div class="div_bt2">
                                                     <button id="add_spec" type="button" class="button2" onmousemove="botao_cor()" onclick="add_input()" >Nova especialidade</button>
-                                                </div>
+                                                </div>-->
 
-                                                <div class="clear"></div>
+                                                <!--<div class="clear"></div>
 
                                                 
                                                     <p id="billing_bank_account_1" class="form-row">
@@ -526,11 +601,13 @@
                                                     <input type="text" value="" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="8" placeholder="Conta Corrente" id="billing_bank_account_cc" name="billing_bank_account_cc" class="input-text ">
                                                     <small>*Sem hífen</small>
                                                 </p>
-                                            </div>
+                                            </div>-->
 
 
 
-                                            <button id="bt_cadastro_chef" type="submit"  onclick="cliente()" style="background-color: #FAD936; color: #474440; font-weight: bold;" >Cadastrar</button>
+
+
+                                            <input id="bt_cadastro_chef" type="submit" value="Cadastrar" style="background-color: #FAD936; color: #474440; font-weight: bold;"/>
 
                                             <!--<p id="order_comments_field" class="form-row notes">
                                                 <label class="" for="order_comments">Order Notes</label>
@@ -733,6 +810,51 @@
 
     <!-- Custom Javascript -->
     <!--<script type="text/javascript" src="{% static 'ustora/js/checkout.js' %}"></script>-->
+    
+    <input type="text" id="campoData">
+    <!--<input type="text" id="campoTelefone">-->
+    <!--<input type="text" id="campoSenha">-->
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <!-- CEP CEP CEP -->
+    <script type="text/javascript">
+        function seeCEP(){
+            var cep = document.getElementById("cep_chef").value;
+            cep1 = cep.slice(0, 5);
+            cep2 = cep.slice(5, 9);
+            console.log(cep2)
+
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://webmaniabr.com/api/1/cep/'+ cep1 + '-' + cep2 +'/?app_key=aKS583EDEUrYILrFx4bdvzYE3NDqwbyZ&app_secret=FznSRBXIL8cLMKmdkYPHIrFs47Put84YGVsMgoSdwP0In7dm', true);
+
+            request.onload = function () {
+            // Begin accessing JSON data here
+            //console.log(this.response);
+
+                var data = JSON.parse(this.response);
+                document.getElementById("bairro_chef").innerHTML = data.bairro;
+                document.getElementById("endereco_chef").innerHTML = data.endereco;
+                document.getElementById("cidade_chef").innerHTML = data.cidade;
+            }
+            request.send();
+
+        }
+    </script>
+
+
+    <script type="text/javascript">
+        $("#cpf_chef, #cpf_cliente").mask("000.000.000-00");
+        $("#rg_chef, #rg_cliente").mask("00.000.000-0");
+        $("#data_chef, #data_cliente").mask("00/00/00");
+        $("#cep_chef, #cep_cliente").mask("00000-000");
+        $("#telefone_chef, #telefone_cliente").mask("(00)00000-0009");
+        $("#cartao_cliente").mask("0000 0000 0000 0000");
+        $("#birthday_chef,#birthday_cliente").mask("00/00/00");
+    </script>
+
+
     <script type="text/javascript">
         
         var x = document.getElementById("cliente");

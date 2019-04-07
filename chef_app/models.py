@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Chef(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)#primary_key=True,   !!!!!!!!!!
 	nome = models.CharField ("Nome", max_length = 40)
 	sobrenome = models.CharField("Sobrenome", max_length = 40)
 	especialidades = models.TextField(null=True, blank=True)
@@ -22,7 +22,7 @@ class Chef(models.Model):
 		
 
 class Cliente(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)#primary_key=True,   !!!!!!!!!!
 	nome = models.CharField("Nome", max_length = 40)
 	sobrenome = models.CharField("Sobrenome", max_length = 40)
 	rg = models.IntegerField("RG", null=True, blank=True)
@@ -33,7 +33,7 @@ class Cliente(models.Model):
 	celular = models.IntegerField(null=True, blank=True)
 	nota = models.IntegerField(null=True, blank=True)
 	#agencia = models.IntegerField("Agencia", null=True, blank=True)
-	conta = models.IntegerField("Conta", null=True, blank=True)
+	#conta = models.IntegerField("Conta", null=True, blank=True)
 	data_cadastro = models.DateTimeField(auto_now_add=True)
 
 	def __str__(self):
