@@ -9,7 +9,7 @@ services:
     command: gunicorn chef.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/home/beatrizoliveira/Documentos/chefemcasa
-      - static_volume:/home/beatrizoliveira/Documentos/chefemcasa/staticfiles
+      - static_volume:/home/beatrizoliveira/Documentos/chefemcasa/static
     expose:
       - 8000
     depends_on:
@@ -18,7 +18,7 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - static_volume:/home/beatrizoliveira/Documentos/chefemcasa/staticfiles
+      - static_volume:/home/beatrizoliveira/Documentos/chefemcasa/static
     ports:
       - 1337:80 
     depends_on:
